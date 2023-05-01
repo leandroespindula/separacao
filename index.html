@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="card__container">
+        <img src="./makerhero-logo.svg" alt="" width="20%">
         <h1>Relatório de Separação</h1>
         <input type="file" accept=".csv" onchange="importarCSV(event)">
         <div class="card" id="card">
@@ -18,11 +19,13 @@
                     <h3 id="codigo">sku</h3>
                     <h3 id="saldo">saldo picking:</h3>
                     <div class="btn">
+                        <button id="prev-btn"> <</button>
                         <button id="verificar" >VERIFICAR</button>
+                        <button id="next-btn">></button>
                     </div>
                 </div>
                 <div class="info__coleta">
-                    <h1 id="localizacao">local:</h1>
+                    <h1 id="localizacao">local:</h1>    
                     <h1 id="quantidade">QTD:</h1>
                     <h1 id="caixa">CAIXA:</h1>
                 </div>

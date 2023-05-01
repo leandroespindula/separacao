@@ -1,3 +1,5 @@
+/* CSS para desktop */
+
 * {
     padding: 0;
     margin: 0;
@@ -14,6 +16,7 @@ body{
 .card__container {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
   
 .card {
@@ -63,11 +66,6 @@ body{
     margin-bottom: 3rem;
 }
 
-.card__container {
-    display: flex;
-    flex-direction: column;
-}
-
 .btn button{
     background-color: #081f2d; 
     border-radius: 15px; 
@@ -86,3 +84,36 @@ body{
     transition: 0.3s; 
 }
 
+.btn button:not(:last-child) {
+    margin-right: 10px;
+}
+
+/* CSS para celular e tablet */
+
+@media screen and (max-width: 768px) {
+
+    .card {
+        padding: 1rem;
+        border: solid black 1px;
+    }
+
+    .card .info .info__produto h3{
+        font-size: 1.5rem;
+    }
+
+    .card .info .info__coleta h1{
+        font-size: 1.2rem;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-container button {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+}
