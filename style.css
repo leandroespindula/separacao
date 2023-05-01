@@ -72,7 +72,7 @@ body{
     border: 1px solid #081F2D; 
     color: white; 
     font-size: 15px; 
-    padding: 10px 45px; 
+    padding: 15px 15px; 
     cursor: pointer; 
     transition: 0.3s; 
 }
@@ -115,5 +115,29 @@ body{
         margin-right: 0;
         margin-bottom: 10px;
     }
+
+}
+
+@media screen and (max-width: 471px) {
+
+    .card {
+        padding: 1rem;
+        border: solid black 1px;
+    }
+
+    .card .info .info__produto h3{
+        font-size: 1.5rem;
+    }
+
+    .card .info .info__coleta h1{
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        width: 100%; /* Sets the width of the button to 100% */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
 
 }
