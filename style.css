@@ -134,7 +134,6 @@ body{
     }
 
     .btn {
-        width: 100%; /* Sets the width of the button to 100% */
         margin-right: 0;
         margin-bottom: 10px;
     }
