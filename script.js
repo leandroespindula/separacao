@@ -1,14 +1,13 @@
-let currentArrayIndex = 0; // declare currentArrayIndex as a global variable
+let currentArrayIndex = 0;
 let csvArray;
-
 
 function parseCSV(text) {
   const rows = text.split('\n');
   const result = [];
-  const startRow = rows[0].indexOf(',') > -1 ? 0 : 1; // check if the CSV file uses commas as delimiters
+  const startRow = rows[0].indexOf(',') > -1 ? 0 : 1;
 
   for (let i = startRow; i < rows.length; i++) {
-    const cells = rows[i].split(';');
+    const cells = rows[i].split(';');''
     result.push(cells);
   }
   return result;
@@ -21,7 +20,7 @@ function importarCSV(event) {
   reader.onload = function() {
     const csvText = reader.result;
     csvArray = parseCSV(csvText);
-    console.log(csvArray); // Exibe o array de arrays no console// Adicione este código dentro da função onload do FileReader
+    console.log(csvArray);
 
     const descricao = document.getElementById('descricao');
     const codigo = document.getElementById('codigo');
@@ -30,32 +29,43 @@ function importarCSV(event) {
     const caixa = document.getElementById('caixa');
     const quantidade = document.getElementById('quantidade');
 
-    // Update HTML with values from current CSV row
     updateHTML();
 
+    const verificarList = [];
+    const reporList = [];
+    const faltouList = [];
+
+    document.getElementById('ok').addEventListener('click', function() {
+      currentArrayIndex++;
+      updateHTML();
+    });
+
     document.getElementById('verificar').addEventListener('click', function() {
+      const codigo = csvArray[currentArrayIndex][0];
+      verificarList.push(codigo);
+      console.log('Código adicionado à lista de verificar: ' + codigo);
       currentArrayIndex++;
       updateHTML();
     });
     
     document.getElementById('repor').addEventListener('click', function() {
-      currentArrayIndex++;
-      updateHTML();
-    });
-    
-    document.getElementById('ok').addEventListener('click', function() {
+      const codigo = csvArray[currentArrayIndex][0];
+      reporList.push(codigo);
+      console.log('Código adicionado à lista de repor: ' + codigo);
       currentArrayIndex++;
       updateHTML();
     });
     
     document.getElementById('faltou').addEventListener('click', function() {
+      const codigo = csvArray[currentArrayIndex][0];
+      faltouList.push(codigo);
+      console.log('Código adicionado à lista de faltou: ' + codigo);
       currentArrayIndex++;
       updateHTML();
     });
   }
 }
 
-// Add these two event listeners to your code
 document.getElementById('next-btn').addEventListener('click', function() {
   if (currentArrayIndex < csvArray.length - 1) {
     currentArrayIndex++;
@@ -70,7 +80,6 @@ document.getElementById('prev-btn').addEventListener('click', function() {
   }
 });
 
-// This function updates the HTML elements with the values from the current CSV row
 function updateHTML() {
   descricao.textContent = csvArray[currentArrayIndex][2];
   codigo.textContent = csvArray[currentArrayIndex][0];
