@@ -1,5 +1,8 @@
 let currentArrayIndex = 0;
 let csvArray;
+const verificarList = [];
+const reporList = [];
+const faltouList = [];
 
 function parseCSV(text) {
   const rows = text.split('\n');
@@ -31,9 +34,7 @@ function importarCSV(event) {
 
     updateHTML();
 
-    const verificarList = [];
-    const reporList = [];
-    const faltouList = [];
+    
 
     document.getElementById('ok').addEventListener('click', function() {
       currentArrayIndex++;
@@ -91,4 +92,73 @@ function updateHTML() {
   caixa.textContent = `CAIXA: ${lastNum}`;
   
   quantidade.textContent = `QTD: ${csvArray[currentArrayIndex][3]}`;
+
+  const arrayIndexElement = document.getElementById('array-index');
+  const arrayLengthElement = document.getElementById('array-length');
+  arrayIndexElement.textContent = currentArrayIndex + 1;
+  arrayLengthElement.textContent = csvArray.length;
+  
+  if (currentArrayIndex === csvArray.length - 1) {
+    const verificarListElement = document.getElementById('verificar-list');
+    const reporListElement = document.getElementById('repor-list');
+    const faltouListElement = document.getElementById('faltou-list');
+    verificarListElement.innerHTML = '';
+    reporListElement.innerHTML = '';
+    faltouListElement.innerHTML = '';
+    verificarList.forEach(function(item) {
+      const li = document.createElement('li');
+      li.textContent = item;
+      verificarListElement.appendChild(li);
+    });
+    reporList.forEach(function(item) {
+      const li = document.createElement('li');
+      li.textContent = item;
+      reporListElement.appendChild(li);
+    });
+    faltouList.forEach(function(item) {
+      const li = document.createElement('li');
+      li.textContent = item;
+      faltouListElement.appendChild(li);
+    });
+  }
 }
+
+
+document.getElementById('verificar').addEventListener('click', function() {
+  const codigo = csvArray[currentArrayIndex][0];
+  verificarList.push(codigo);
+  console.log('Código adicionado à lista de verificar: ' + codigo);
+  const verificarListElement = document.getElementById('verificar-list');
+  const li = document.createElement('li');
+  li.textContent = codigo;
+  verificarListElement.appendChild(li);
+  currentArrayIndex++;
+  updateHTML();
+});
+
+document.getElementById('repor').addEventListener('click', function() {
+  const codigo = csvArray[currentArrayIndex][0];
+  reporList.push(codigo);
+  console.log('Código adicionado à lista de repor: ' + codigo);
+  const reporListElement = document.getElementById('repor-list');
+  const li = document.createElement('li');
+  li.textContent = codigo;
+  reporListElement.appendChild(li);
+  currentArrayIndex++;
+  updateHTML();
+});
+
+document.getElementById('faltou').addEventListener('click', function() {
+  const codigo = csvArray[currentArrayIndex][0];
+  faltouList.push(codigo);
+  console.log('Código adicionado à lista de faltou: ' + codigo);
+  const faltouListElement = document.getElementById('faltou-list');
+  const li = document.createElement('li');
+  li.textContent = codigo;
+  faltouListElement.appendChild(li);
+  currentArrayIndex++;
+  updateHTML();
+});
+
+
+

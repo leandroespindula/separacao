@@ -1,4 +1,0 @@
-document.getElementById('ok').addEventListener('click', function() {
-      currentArrayIndex++;
-      updateHTML();
-    });
