@@ -177,3 +177,7 @@ document.getElementById('start-btn').addEventListener('click', function() {
     }
   };
 });
+
+recognition.onend = function() {
+  recognition.start();
+};
