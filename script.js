@@ -160,5 +160,20 @@ document.getElementById('faltou').addEventListener('click', function() {
   updateHTML();
 });
 
-
-
+document.getElementById('start-btn').addEventListener('click', function() {
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = 'pt-BR';
+  recognition.start();
+  recognition.onresult = function(event) {
+    const speechResult = event.results[0][0].transcript.toLowerCase();
+    if (speechResult.includes('verificar')) {
+      document.getElementById('verificar').click();
+    } else if (speechResult.includes('repor')) {
+      document.getElementById('repor').click();
+    } else if (speechResult.includes('ok')) {
+      document.getElementById('ok').click();
+    } else if (speechResult.includes('faltou')) {
+      document.getElementById('faltou').click();
+    }
+  };
+});
