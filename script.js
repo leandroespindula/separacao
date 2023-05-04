@@ -168,27 +168,21 @@ recognition.start();
 
 const recognition = new webkitSpeechRecognition();
 
-recognition.onresult = function(event) {
-  const result = event.results[event.results.length - 1][0].transcript;
-  
-  switch(result.toLowerCase()) {
-    case 'verificar':
-      document.querySelector('#verificar').click();
-      currentArrayIndex++;
-      break;
-    case 'faltou':
-      document.querySelector('#faltou').click();
-      currentArrayIndex--;
-      break;
-    case 'repor':
-      document.querySelector('#repor').click();
-      currentArrayIndex--;
-      break;
-    case 'ok':
-      document.querySelector('#ok').click();
-      currentArrayIndex++;
-      break;
-  }
-}
 
-recognition.start();
+recognition.onresult = function(event) {
+  const speechResult = event.results[0][0].transcript.toLowerCase();
+  if (speechResult.includes('verificar')) {
+    document.getElementById('verificar').click();
+  } else if (speechResult.includes('repor')) {
+    document.getElementById('repor').click();
+  } else if (speechResult.includes('ok')) {
+    document.getElementById('ok').click();
+  } else if (speechResult.includes('faltou')) {
+    document.getElementById('faltou').click();
+  }
+};
+
+recognition.onend = function(event) {
+  recognition.start();
+};
+
