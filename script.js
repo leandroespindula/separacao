@@ -159,30 +159,3 @@ document.getElementById('faltou').addEventListener('click', function() {
   currentArrayIndex++;
   updateHTML();
 });
-
-const recognition = new webkitSpeechRecognition();
-recognition.continuous = true;
-recognition.interimResults = false;
-recognition.lang = 'pt-BR';
-recognition.start();
-
-const recognition = new webkitSpeechRecognition();
-
-
-recognition.onresult = function(event) {
-  const speechResult = event.results[0][0].transcript.toLowerCase();
-  if (speechResult.includes('verificar')) {
-    document.getElementById('verificar').click();
-  } else if (speechResult.includes('repor')) {
-    document.getElementById('repor').click();
-  } else if (speechResult.includes('ok')) {
-    document.getElementById('ok').click();
-  } else if (speechResult.includes('faltou')) {
-    document.getElementById('faltou').click();
-  }
-};
-
-recognition.onend = function(event) {
-  recognition.start();
-};
-
