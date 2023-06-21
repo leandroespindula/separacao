@@ -34,8 +34,6 @@ function importarCSV(event) {
 
     updateHTML();
 
-    
-
     document.getElementById('ok').addEventListener('click', function() {
       currentArrayIndex++;
       updateHTML();
@@ -45,7 +43,7 @@ function importarCSV(event) {
       const codigo = csvArray[currentArrayIndex][0];
       verificarList.push(codigo);
       console.log('Código adicionado à lista de verificar: ' + codigo);
-      currentArrayIndex++;
+
       updateHTML();
     });
     
@@ -53,7 +51,6 @@ function importarCSV(event) {
       const codigo = csvArray[currentArrayIndex][0];
       reporList.push(codigo);
       console.log('Código adicionado à lista de repor: ' + codigo);
-      currentArrayIndex++;
       updateHTML();
     });
     
@@ -61,7 +58,6 @@ function importarCSV(event) {
       const codigo = csvArray[currentArrayIndex][0];
       faltouList.push(codigo);
       console.log('Código adicionado à lista de faltou: ' + codigo);
-      currentArrayIndex++;
       updateHTML();
     });
   }
@@ -88,7 +84,7 @@ function updateHTML() {
   localizacao.textContent = csvArray[currentArrayIndex][4];
   
   const caixaStr = csvArray[currentArrayIndex][1];
-  const lastNum = parseInt(caixaStr.substring(caixaStr.length - 2));
+  const lastNum = parseInt(caixaStr.substring(caixaStr.length - 1));
   caixa.textContent = `CAIXA: ${lastNum}`;
   
   quantidade.textContent = `QTD: ${csvArray[currentArrayIndex][3]}`;
