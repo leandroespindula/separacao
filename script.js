@@ -78,16 +78,16 @@ document.getElementById('prev-btn').addEventListener('click', function() {
 });
 
 function updateHTML() {
-  descricao.textContent = csvArray[currentArrayIndex][2];
+  descricao.textContent = csvArray[currentArrayIndex][3];
   codigo.textContent = csvArray[currentArrayIndex][0];
-  saldo.textContent = `saldo picking: ${csvArray[currentArrayIndex][5]}`;
-  localizacao.textContent = csvArray[currentArrayIndex][4];
+  saldo.textContent = `saldo picking: ${csvArray[currentArrayIndex][6]}`;
+  localizacao.textContent = csvArray[currentArrayIndex][5];
   
   const caixaStr = csvArray[currentArrayIndex][1];
-  const lastNum = parseInt(caixaStr.substring(caixaStr.length - 1));
+  const lastNum = parseInt(caixaStr.substring(caixaStr.length - 2));
   caixa.textContent = `CAIXA: ${lastNum}`;
   
-  quantidade.textContent = `QTD: ${csvArray[currentArrayIndex][3]}`;
+  quantidade.textContent = `QTD: ${csvArray[currentArrayIndex][4]}`;
 
   const arrayIndexElement = document.getElementById('array-index');
   const arrayLengthElement = document.getElementById('array-length');
